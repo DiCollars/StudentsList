@@ -1,0 +1,20 @@
+﻿@model IEnumerable<StudentsList.Models.Group>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<a href="~/Home/AddOrEdit/">Add student</a><br>
+
+@foreach (var group in Model)
+ {
+    <p>
+        <b> @group.Id - @group.GroupName  (@group.Students?.Count()) </b>
+
+        @foreach (var student in group.Students)
+         {
+            <p>
+            &nbsp; &nbsp;@student.FullName
+            <a href="~/Home/AddOrEdit/@student.Id"> Edit</a> <a href="~/Home/Delete/@student.Id"> Delete</a>
+            </p>
+         }
+    </p><br>
+ }
